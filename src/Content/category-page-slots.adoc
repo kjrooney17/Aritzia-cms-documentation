@@ -1,0 +1,22 @@
+The slot content types are stored within the slots repos that have been defined as seen in the image below.
+
+.Slot repository
+
+
+There are 3 slot areas available on the Category page.
+
+* Category Banner Slot - Allows for multiple pieces of content to be put at the top of the page.
+* In-Grid Promo Slot - This controls the content that will be displayed within the grid at the configured locations for Category pages with content.
+* Category Bottom Slot - This slot allows for multiple pieces of content that is displayed at the bottom of the page underneath the products.
+
+
+
+*Category Banner Slot*
+
+
+
+
+
+
+
+

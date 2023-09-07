@@ -1,0 +1,84 @@
+[#navigation-content]
+== Navigation
+
+The navigation is managed through the Amplience Hierarchy structure. It allows for adding top level content items that are lists or are links to pages. The list can be nested to have additional lists or list items within.
+
+The navigation content is stored in a repo called *Menu*. All available content types that are used to build the top navigation and footer navigation are stored in folders within the *Menu* repo.
+
+.Example navigation
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav[]
+
+.Menu Repo
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-Repo[]
+
+=== Navigation Hierarchy
+
+The navigation is built using the Amplience functionality called hierarchies. Below is a screenshot of the hierarchy that was implemented on the development system.
+
+.Expanded Navigation Hierarchy
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-Hierarchy[]
+
+=== Nav Root Node
+
+The nav root node is the top of the hierarchy, which is then used to add the navigation items as either a *Nav Menu Node* or *Single Nav Menu Node*. This node does not get shown in the menu as it's controlled by a checkbox flag called "Show in Menu?"
+
+*Schema* - nav-root-node.json
+
+==== Add node to the hierarchy:
+
+. Put your mouse over the Root node and click on the 3 ...
+. Select "*Add child node*"
++
+.Add child node
+image::https://cdn.media.amplience.net/i/elfcosmetics/Root-Add-Child-Node[]
++
+. Choose to add either a "*Nav Menu Node*" or "*Single Nav Menu Node*"
+. Choose "Add existing" to add an existing node or "Create and add new" to add a new item.
+
+.Add child node options
+image::https://cdn.media.amplience.net/i/elfcosmetics/Root-Add-Child-Node-Modal[]
+
+[NOTE]
+====
+Only unique nodes are allowed to be added to a hierarchy as they cannot be used in more than one hierarchy.
+====
+
+==== Remove node from the Navigation
+
+In this scenario the node to removed from the navigation is not removed from the hierarchy. The node is still valid, but isn't always shown in the menu. 
+
+. Locate the node to be hidden in the hierarchy.
+. Unselect the Show In Menu? flag and save.
+. Publish the node.
+
+==== Remove node from the Hierarchy
+
+In this scenario the node should be completely removed from the hierarchy.
+
+. Locate the node that is to be removed from the hierarchy and mouse over the node.
+. Click the *...* to bring up a sub-menu.
+. Select *Remove node*
++
+.Remove node
+image::https://cdn.media.amplience.net/i/elfcosmetics/Remove-Node[]
++
+. Once the node has been removed from the hierarchy go back to the Nav Hierarchy folder.
+. In the upper right hand corner click on the List Settings Button and select to show Hierarchy Child nodes show the child nodes of the main hierarchy node.
++
+.Show/Hide child nodes
+image::https://cdn.media.amplience.net/i/elfcosmetics/Show-Hierarchy-Child-Nodes[]
++
+. Locate the node that was removed, hover over the item and click on the *...* buttons at the right of the page to bring up a sub menu.
+. Click on Publish to remove the relationship between the Nav Root Node and the child node.
+
+[NOTE]
+====
+Any nodes that are removed from the hierarchy have to be published after they have been removed in order to break the parent child relationship. If this step is not done the removed item will still be in the JSON output.
+====
+
+
+
+
+
+
+

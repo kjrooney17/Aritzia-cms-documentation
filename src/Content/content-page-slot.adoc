@@ -1,0 +1,39 @@
+The Content Page doesn't support the use of slots. Content is added directly to the page via the Content input component.
+
+.Content Page Available Content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Page-Mapping[]
+
+.Content Page allowed content types partials example.
+[%collapsible]
+====
+[#contentPageContentHeroSlot,JSON]
+----
+"content-page-slot":{
+    "enum":[
+        "https://www.elfcosmetics.com/content/banner.json",
+        "https://www.elfcosmetics.com/content/banner-side-by-side.json",
+        "https://www.elfcosmetics.com/content/button-group.json",
+        "https://www.elfcosmetics.com/content/content-accordion.json",
+        "https://www.elfcosmetics.com/content/content-left-right.json",
+        "https://www.elfcosmetics.com/content/content-box.json",
+        "https://www.elfcosmetics.com/content/content-callout-message.json",
+        "https://www.elfcosmetics.com/content/content-cta.json",
+        "https://www.elfcosmetics.com/content/content-headline-text.json",
+        "https://www.elfcosmetics.com/content/content-html-block.json",
+        "https://www.elfcosmetics.com/content/content-text.json",
+        "https://www.elfcosmetics.com/content/content-video.json",
+        "https://www.elfcosmetics.com/content/discovery-group.json",
+        "https://www.elfcosmetics.com/content/feature-cards.json",
+        "https://www.elfcosmetics.com/content/hero.json",
+        "https://www.elfcosmetics.com/content/image-banner.json",
+        "https://www.elfcosmetics.com/content/instagram-post.json",
+        "https://www.elfcosmetics.com/content/lookbook-hero.json",
+        "https://www.elfcosmetics.com/content/offer-cards-products.json",
+        "https://www.elfcosmetics.com/content/promo-banner.json",
+        "https://www.elfcosmetics.com/content/seo-text.json",
+        "https://www.elfcosmetics.com/content/social-ugc.json"
+
+    ]
+}
+----
+====

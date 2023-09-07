@@ -1,0 +1,1 @@
+The CMS documentation was written using Markdown language using a specific Markdwown tool called Asciidoctor. There is an add-on for Visual Studio that will generate the markdown HTML file that can be found https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode. The build process called the Asciidoctor API to build the outputting HTML file.

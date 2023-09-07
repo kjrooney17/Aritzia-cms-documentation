@@ -1,0 +1,28 @@
+Footnote text input components are managed in a Schema Partial.
+
+.Footnote Text Definition
+[cols="6,6"]
+|===
+|Partial|Property Name
+
+|<<text-area-partial,text-area.json>>|footnoteText
+|===
+
+.Example Footnote Text
+image::https://cdn.media.amplience.net/i/elfcosmetics/Footnote-Text-Example[]
+
+.Footnote text input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Footnote-Text[]
+
+Footnote Text::
+This uses the rich text editor that enables the editors to apply some basic formatting to text and create text links within the editor.
+
+Footnote Text Color::
+This will apply a color to the footnote text object. Valid options are below
+
+.Footnote Text Color
+[%collapsible]
+====
+image::https://cdn.media.amplience.net/i/elfcosmetics/Footnote-Text-Color[]
+====
+

@@ -1,0 +1,10 @@
+[#content-headline-text]
+=== Content Headline Text
+
+*Schema* - content-headline-text.json
+
+==== Example 
+
+.Example
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Headline-Text-Temp-Example[]
+

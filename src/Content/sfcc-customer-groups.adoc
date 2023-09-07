@@ -1,0 +1,7 @@
+SFCC Customer Groups::
+To select one or more customer groups click on the drop down arrow on the SFCC Customer Groups option and click on the item you want to select. Repeat the steps if the content needs to be associated with more than one Customer Group.
+
+[NOTE]
+====
+Leaving the SFCC Customer group blank will set the content to be the default content on the site.
+====

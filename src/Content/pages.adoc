@@ -1,0 +1,9 @@
+[#page-content]
+== Pages
+
+include::category-page.adoc[]
+
+include::content-page.adoc[]
+
+include::homepage.adoc[]
+

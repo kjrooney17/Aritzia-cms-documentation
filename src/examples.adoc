@@ -1,0 +1,161 @@
+// ************************************ Links ************************************
+//
+//                              https://asciidoctor.org/
+//
+
+// ************************************ Navigation Levels ************************************
+= Level 1
+== Level 2
+=== Level 3
+
+// ************************************ Text Formattings ************************************
+Lorem ipsum _dolor_ sit amet, `consetetur` sadipscing *elitr*, sed diam nonumy eirmod tempor invidunt ut [underline]#labore et dolore magna aliquyam# erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+_italic_ +
+`monospace` +
+*bold* +
+[underline]#underline#
+
+// ************************************ Variables ************************************
+This is a variable: {fs} +
+This is a {button}. +
+see: *_variables.adoc_* for all available variables & buttons
+
+// ************************************ Lists ************************************
+* List-Item
+** List-Item 2
+*** List-Item 3
+**** List-Item 4
+
+. Item 1
+.. Item 2
+... Item 3
+... Item 4
+.... Item 5
+..... Item 6
+..... Item 7
+.. Item 8
+
+* [*] checked
+* [x] also checked
+* [ ] not checked
+
+// ************************************ Tables ************************************
+=== Table Headline (Nav)
+[format="csv", options="header", cols="1,5"]
+|===
+Column-1,Column-2
+Text,Text in Column 2
+Text in Column 1,Column 2
+|===
+
+[cols="e,m,^,>s", width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
+
+[cols="1,1,2", options="header"] 
+.Lorem Ipsum
+|===
+|Head 1
+|Head 2
+|Head 3
+
+|Lorem
+|Ipsum
+|dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+
+|At
+|vero
+|eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+|===
+
+// ************************************ Anchor / Caption / Image ************************************
+[[example]]
+.This is an example
+image::example.png[]
+
+// ************************************ Links ************************************
+External: http://www.google.com +
+Internal: <<example>> or <<example,Custom Text>> +
+Example: http://www.google.com[menu:Lorem[ipsum>dolor]].
+
+// ************************************ Definitions ************************************
+term1:: definition of term1
+_term2_::
+definition of term2
+
+// ************************************ Hints ************************************
+[NOTE]
+====
+Lorem ipsum dolor sit amet, consetetur *sadipscing* elitr, sed diam _nonumy_ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed {fs} voluptua.
+====
+[TIP]
+====
+Lorem ipsum dolor sit amet, consetetur *sadipscing* elitr, sed diam _nonumy_ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed {fs} voluptua.
+====
+[IMPORTANT]
+====
+Lorem ipsum dolor sit amet, consetetur *sadipscing* elitr, sed diam _nonumy_ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed {fs} voluptua.
+====
+[WARNING]
+====
+Lorem ipsum dolor sit amet, consetetur *sadipscing* elitr, sed diam _nonumy_ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed {fs} voluptua.
+====
+[CAUTION]
+====
+Lorem ipsum dolor sit amet, consetetur *sadipscing* elitr, sed diam _nonumy_ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed {fs} voluptua.
+====
+
+// ************************************ Source Code ************************************
+[source,FirstSpirit]
+.Caption for Codeblock (FirstSpirit)
+// codeStart
+----
+<!-- CMS-VELOCITY-PAGE_HEADER-START -->
+   $include.widget('Common-PageHeader')
+<!-- CMS-VELOCITY-PAGE_HEADER-END -->	
+----
+// codeEnd
+
+[source,xml]
+.Caption for Codeblock (XML)
+// codeStart
+----
+$CMS_REF(st_picture, resolution:"RESOLUTION")$
+----
+// codeEnd
+
+[source,html]
+.Caption for Codeblock (HTML)
+// codeStart
+----
+<nav>
+  <ul>
+    <li><a href="#" title="Lorum ipsum">Lorem</a></li>
+    <li><a href="#" title="dolor sit amet">Ipsum</a></li>
+  </ul>
+</nav>
+----
+// codeEnd
+
+[source,xml]
+----
+<section>
+  <title>Template Documentation</title> <!--1-->
+</section>
+----
+<1> Comment on line 2
+
+// ************************************ Misc ************************************
+`*menu:Lorem[Ipsum]*`
+
+A statement.footnote:[Footnote 1.] +
+Another statement!footnoteref:[disclaimer,Footnote 2.] +
+Another statement.footnoteref:[disclaimer] +
+
+// Includes
+include::variables.adoc[]

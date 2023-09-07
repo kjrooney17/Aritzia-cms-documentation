@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Aritzia Contentful CMS Documentation</title>
+<style>
+@import "https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css";
+
+/* place custom style overrides below */
+
+/* ----- Global Styles --------------------- */
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+#header,
+#content,
+#footnotes,
+#footer {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+a {
+  color: #333;
+}
+
+a:hover,
+a:focus {
+  color: #333;
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 0;
+  word-spacing: normal;
+}
+h1 {
+  font-weight: bold;
+}
+h3 {
+  font-weight: bold;
+}
+.sect3 {
+  padding: 1em;
+  border-top: solid 1px #eaeaea;
+}
+.imageblock {
+  background-color: #f2f2f2;
+  padding: 30px;
+}
+.imageblock .title {
+  color: #333;
+  margin-top: 6px;
+  font-style: normal;
+}
+
+.imageblock > .title {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+table.tableblock > .title {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  color: #333;
+  font-style: normal;
+}
+
+div[name="_introduction"] {
+  margin-top: 20px;
+}
+
+.component-grid td.tableblock {
+  border: 0;
+}
+
+/* ----- Table of Contents Styles --------------------- */
+#toc.toc2 #toctitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75em;
+  color: #333;
+  border-bottom: 1px solid #dddddf;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.tocify-header {
+  font-weight: 400;
+}
+.tocify-subheader {
+  font-style: normal;
+  font-size: 96%;
+}
+.tocify-focus {
+  color: #1565c0;
+}
+.tocify-focus > a {
+  color: #1565c0;
+}
+#toc a {
+  color: #333;
+}
+#toc ul {
+  font-family: "Roboto", sans-serif;
+  margin-left: 0;
+}
+#toc li {
+  margin-top: 0.4em;
+}
+#toc a:hover {
+  color: #333;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.tocify-item.ui-widget-content.ui-state-default {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  #toc.toc2 #toctitle {
+    font-size: 0.75em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #header,
+  #content,
+  #footnotes,
+  #footer {
+    width: 100%;
+    margin: 0;
+    max-width: 62.5em;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="64_touch_icon_72.png">
+
+<!-- Generate a nice TOC -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<!-- We do not need the tocify CSS because the asciidoc CSS already provides most of what we neeed -->
+
+<script type="text/javascript">
+  $(function () {
+    // Add a new container for the tocify toc into the existing toc so we can re-use its
+    // styling
+    console.log("Running TOCIFY");
+    $("#toc").append("<div id='generated-toc'></div>");
+    $("#generated-toc").tocify({
+      extendPage: true,
+      context: "#content",
+      highlightOnScroll: true,
+      hideEffect: "slideUp",
+      highlightDefault: false,
+      // Use the IDs that asciidoc already provides so that TOC links and intra-document
+      // links are the same. Anything else might confuse users when they create bookmarks.
+      hashGenerator: function (text, element) {
+        return $(element).attr("id");
+      },
+      // Smooth scrolling doesn't work properly if we use the asciidoc IDs
+      smoothScroll: false,
+      // Set to 'none' to use the tocify classes
+      theme: "jqueryui",
+      // Handle book (may contain h1) and article (only h2 deeper)
+      selectors:
+        $("#content").has("h1").size() > 0 ? "h1,h2,h3,h4,h5" : "h2,h3,h4,h5",
+      ignoreSelector: ".discrete",
+    });
+
+    // Switch between static asciidoc toc and dynamic tocify toc based on browser size
+    // This is set to match the media selectors in the asciidoc CSS
+    // Without this, we keep the dynamic toc even if it is moved from the side to preamble
+    // position which will cause odd scrolling behavior
+    var handleTocOnResize = function () {
+      if ($(document).width() < 768) {
+        $("#generated-toc").hide();
+        $(".sectlevel0").show();
+        $(".sectlevel1").show();
+      } else {
+        $("#generated-toc").show();
+        $(".sectlevel0").hide();
+        $(".sectlevel1").hide();
+      }
+    };
+
+    $(window).resize(handleTocOnResize);
+    handleTocOnResize();
+    if (!document.location.hash) {
+      $(".tocify-subheader").hide();
+    }
+  });
+</script>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Aritzia Contentful CMS Documentation</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Aritzia CMS Documentation</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#merchandising-components">Merchandising Components</a>
+<ul class="sectlevel2">
+<li><a href="#brand-product-grid">Brand Product Grid</a></li>
+<li><a href="#card-list">Card List</a></li>
+<li><a href="#category-swiper">Category Swiper</a></li>
+<li><a href="#category-swiper-tab">Category Swiper Tab</a></li>
+<li><a href="#fabric-care-feature">Fabric Care Feature</a></li>
+<li><a href="#hero-split-container">Hero Split Container</a></li>
+<li><a href="#hero">HP Hero Promo</a></li>
+<li><a href="#in-page-navigation">In Page Navigation</a></li>
+</ul>
+</li>
+<li><a href="#content-components">Content Components</a></li>
+<li><a href="#global-components">Global Components</a>
+<ul class="sectlevel2">
+<li><a href="#concierge-block">Concierge Block</a></li>
+<li><a href="#message-banner">Message Banner</a></li>
+</ul>
+</li>
+<li><a href="#page-content">Pages</a>
+<ul class="sectlevel2">
+<li><a href="#_category_page">Category Page</a>
+<ul class="sectlevel3">
+<li><a href="#_slots">Slots</a></li>
+</ul>
+</li>
+<li><a href="#content-page">Content Page</a>
+<ul class="sectlevel3">
+<li><a href="#_breadcrumb">BreadCrumb</a></li>
+</ul>
+</li>
+<li><a href="#_homepage">Homepage</a>
+<ul class="sectlevel3">
+<li><a href="#_e_l_f_cosmetics">e.l.f. Cosmetics</a></li>
+<li><a href="#_slots_2">Slots</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#navigation-content">Navigation</a>
+<ul class="sectlevel2">
+<li><a href="#_navigation_hierarchy">Navigation Hierarchy</a></li>
+<li><a href="#_nav_root_node">Nav Root Node</a>
+<ul class="sectlevel3">
+<li><a href="#_add_node_to_the_hierarchy">Add node to the hierarchy:</a></li>
+<li><a href="#_remove_node_from_the_navigation">Remove node from the Navigation</a></li>
+<li><a href="#_remove_node_from_the_hierarchy">Remove node from the Hierarchy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#footer-navigation-content">Footer Navigation</a></li>
+<li><a href="#guides-content">Guides</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_pages">Creating Pages</a>
+<ul class="sectlevel3">
+<li><a href="#_category_page_2">Category Page</a></li>
+<li><a href="#_content_page">Content Page</a></li>
+<li><a href="#_landing_page">Landing Page</a></li>
+</ul>
+</li>
+<li><a href="#_publishing_content">Publishing Content</a></li>
+<li><a href="#_scheduling_content">Scheduling content</a>
+<ul class="sectlevel3">
+<li><a href="#_creating_an_event">Creating an Event</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#helpful-links">Helpful Links</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/elf-intro-image" alt="elf intro image">
+</div>
+</div>
+<div class="paragraph">
+<p>This document outlines in detail the Amplience CMS implementation for e.l.f. Cosmetics. The following list of items are discussed within this document.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All <a href="#merchandising-components">Merchandising Components</a> defined with examples.</p>
+</li>
+<li>
+<p>All <a href="#content-components">Content Components</a> defined with examples.</p>
+</li>
+<li>
+<p><a href="#discovery-components">Discovery/Lookbook Components</a> defined with examples.</p>
+</li>
+<li>
+<p><a href="#global-components">Global content</a>.</p>
+</li>
+<li>
+<p>All <a href="#page-content">page types</a> and how to work with the pages/slots on the page.</p>
+</li>
+<li>
+<p>How to manage the <a href="#navigation-content">Navigation</a>.</p>
+</li>
+<li>
+<p>How to manage the <a href="#footer-navigation-content">Footer Navigation</a>.</p>
+</li>
+<li>
+<p><a href="#partials-content">Partials</a>, which are content items not specifically associated with any page.</p>
+</li>
+<li>
+<p><a href="#schema-partials-content">Schema Partials</a>.</p>
+</li>
+<li>
+<p><a href="#guides-content">Guides</a>.</p>
+</li>
+<li>
+<p><a href="#helpful-links">Helpful Links</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="merchandising-components">Merchandising Components</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch merchandising-grid">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#brand-product-grid"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner@2x" alt="amp icon banner@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#card-list"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner-side-by-side@2x" alt="amp icon banner side by side@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#category-swiper"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-button-group@2x" alt="amp icon button group@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#category-swiper-tab"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-carousel-banner@2x" alt="amp icon carousel banner@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#brand-product-grid">Brand Product Grid</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#card-list">Card List</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#category-swiper">Category Swiper</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#category-swiper-tab">Category Swiper Tab</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#fabric-care-feature"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-countdown-timer@2x" alt="amp icon countdown timer@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="hero-split-container"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-feature-cards@2x" alt="amp icon feature cards@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#hero"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-feature-tile-list@2x" alt="amp icon feature tile list@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#in-page-navigation"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero@2x" alt="amp icon hero@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#fabric-care-feature">Fabric Care Feature</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#hero-split-container">Hero Split Container</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#hero">HP Hero Promo</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#in-page-navigation">In Page Navigation</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#plp-category-banner"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero-inset-video@2x" alt="amp icon hero inset video@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#product-card"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero-side-by-side@2x" alt="amp icon hero side by side@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#product-swiper"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-Image-banner@2x" alt="amp icon Image banner@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#promo-card-1up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-card@2x" alt="amp icon in grid card@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#plp-category-banner">PLP Category Banner</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#product-card">Product Card</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#product-swiper">Product Swiper</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#promo-card-1up">Promo Card 1UP</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#promo-card-3up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x" alt="amp icon in grid split card@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#promo-card-4up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x" alt="amp icon loyalty bar@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#sticky-nav-banner"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x" alt="amp icon offer card products@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-1up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x" alt="amp icon social ugc@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#promo-card-3up">Promo Card 3UP</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#promo-card-4up">Promo Card 4UP</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#sticky-nav-banner">Sticky Nav Banner</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-1up">Story Tile Layout 1Up</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-2up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x" alt="amp icon in grid split card@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-2up-varied"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x" alt="amp icon loyalty bar@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-2up-1up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x" alt="amp icon offer card products@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-3up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x" alt="amp icon social ugc@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-2up">Story Tile Layout 2Up</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-2up-varied">Story Tile Layout 2Up Varied</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-2up-1up">Story Tile Layout 2Up 1Up</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-3up">Story Tile Layout 3Up</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-tile-layout-4up"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x" alt="amp icon in grid split card@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#story-with-products"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x" alt="amp icon loyalty bar@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#swiper"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x" alt="amp icon offer card products@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#text-banner"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x" alt="amp icon social ugc@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-tile-layout-4up">Story Tile Layout 4Up</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#story-with-products">Story with Products</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#swiper">Swiper</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#text-banner">Text Banner</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#visual-navigation"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-subnav-bar@2x" alt="amp icon subnav bar@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#visual-navigation">Visual Navigation</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="brand-product-grid">Brand Product Grid</h3>
+<table class="tableblock frame-all grid-all stretch brand-product-grid-links">
+<caption class="title">Table 1. Brand Product Grid Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/brandProductGrid/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/brandProductGrid/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/brand-product-grid" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/brand-product-grid</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="card-list">Card List</h3>
+<table class="tableblock frame-all grid-all stretch card-list-links">
+<caption class="title">Table 2. Card List Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/cardList/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/cardList/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/card/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/card/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/productCard/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/productCard/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/card-list" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/card-list</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="category-swiper">Category Swiper</h3>
+<table class="tableblock frame-all grid-all stretch category-swiper-links">
+<caption class="title">Table 3. Category Swiper Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiper/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiper/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/category-swiper" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/category-swiper</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="category-swiper-tab">Category Swiper Tab</h3>
+<table class="tableblock frame-all grid-all stretch category-swiper-tab-links">
+<caption class="title">Table 4. Category Swiper Tab Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperTab/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperTab/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Still Need to get</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fabric-care-feature">Fabric Care Feature</h3>
+<table class="tableblock frame-all grid-all stretch fabric-care-feature-links">
+<caption class="title">Table 5. Fabric Care Feature Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/fabricCareFeature/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/fabricCareFeature/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/fabric-care-feature" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/fabric-care-feature</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="hero-split-container">Hero Split Container</h3>
+<table class="tableblock frame-all grid-all stretch hero-split-container-links">
+<caption class="title">Table 6. Hero Split Container Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplitContainer/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplitContainer/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplit/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplit/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hero-split" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hero-split</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="hero">HP Hero Promo</h3>
+<table class="tableblock frame-all grid-all stretch hero-links">
+<caption class="title">Table 7. HP Hero Promo Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/hpHeroPromo/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/hpHeroPromo/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hp-hero-promo" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hp-hero-promo</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="in-page-navigation">In Page Navigation</h3>
+<table class="tableblock frame-all grid-all stretch in-page-nav-links">
+<caption class="title">Table 8. In Page Navigation Links</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavigation/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavigation/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content Model Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavItem/fields" class="bare">https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavItem/fields</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/in-page-navigation" class="bare">https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/in-page-navigation</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="content-components">Content Components</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch component-grid">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-accordion"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-accordion@2x" alt="amp icon content accordion@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-box"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-box@2x" alt="amp icon content box@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-call-out-message"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-callout-message@2x" alt="amp icon content callout message@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-cta"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-cta@2x" alt="amp icon content cta@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-accordion">Content Accordion</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-box">Content Box</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-call-out-message">Content Call Out Message</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-cta">Content CTA</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-headline-text"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-headline-text@2x" alt="amp icon headline text@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-html"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-html-block@2x" alt="amp icon html block@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-alternating-text-image"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-alternating-text-image@2x" alt="amp icon content alternating text image@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-text"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-text@2x" alt="amp icon content text@2x"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-headline-text">Content Headline Text</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-html-block">Content HTML Block</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-alternating-text-image">Content Alternating Text Image</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-text">Content Text</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<a class="image" href="#content-video"><img src="https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-video@2x" alt="amp icon content video@2x"></a>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#content-video">Content Video</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="global-components">Global Components</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="concierge-block">Concierge Block</h3>
+
+</div>
+<div class="sect2">
+<h3 id="message-banner">Message Banner</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="page-content">Pages</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_category_page">Category Page</h3>
+<div class="paragraph">
+<p>The category page was automatically created by fetching all category information from SFCC and populating the page information that will be discussed below.</p>
+</div>
+<div class="sect3">
+<h4 id="_slots">Slots</h4>
+<div class="paragraph">
+<p>The slots on the Category (PLP) page are localized so that content can be unique across the defined locales (see below). If a localized slot is empty there is no fallback content available and no content will be displayed for that locale.</p>
+</div>
+<div class="paragraph">
+<p>The slot content types are stored within the slots repos that have been defined as seen in the image below.</p>
+</div>
+<div class="paragraph">
+<div class="title">Slot repository</div>
+<p>There are 3 slot areas available on the Category page.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Category Banner Slot - Allows for multiple pieces of content to be put at the top of the page.</p>
+</li>
+<li>
+<p>In-Grid Promo Slot - This controls the content that will be displayed within the grid at the configured locations for Category pages with content.</p>
+</li>
+<li>
+<p>Category Bottom Slot - This slot allows for multiple pieces of content that is displayed at the bottom of the page underneath the products.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Category Banner Slot</strong></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="content-page">Content Page</h3>
+<div class="paragraph">
+<p>The content page can be used for many different designs based upon the number of available components for this page type. Many of the footer link pages have been re-created using the content page type.</p>
+</div>
+<div class="paragraph">
+<p><strong>Schema</strong> - content-page.json"</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Content-Page-Example1" alt="Content Page Example1">
+</div>
+<div class="title">Figure 1. Example Award-Winning and Viral TikTok Makeup Gift Guide content page</div>
+</div>
+<div class="sect3">
+<h4 id="_breadcrumb">BreadCrumb</h4>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Bread-Crumb" alt="Bread Crumb">
+</div>
+<div class="title">Figure 2. Breadcrumb</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Breadcrumb</dt>
+<dd>
+<p>This allows the content editor to manually add a breadcrumb to the page. Available color options are below. To add a breadcrumb trail click on the "Add BreadCrumb" button.</p>
+</dd>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Bread-Crumb-Input" alt="Bread Crumb Input">
+</div>
+<div class="title">Figure 3. Breadcrumb input components</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">CTA Text</dt>
+<dd>
+<p>The label for the Breadcrumb.</p>
+</dd>
+<dt class="hdlist1">CTA Link</dt>
+<dd>
+<p>==== Slot</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The Content Page doesn&#8217;t support the use of slots. Content is added directly to the page via the Content input component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Content-Page-Mapping" alt="Content Page Mapping">
+</div>
+<div class="title">Figure 4. Content Page Available Content</div>
+</div>
+<details>
+<summary class="title">Content Page allowed content types partials example.</summary>
+<div class="content">
+<div id="contentPageContentHeroSlot" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-JSON" data-lang="JSON">"content-page-slot":{
+    "enum":[
+        "https://www.elfcosmetics.com/content/banner.json",
+        "https://www.elfcosmetics.com/content/banner-side-by-side.json",
+        "https://www.elfcosmetics.com/content/button-group.json",
+        "https://www.elfcosmetics.com/content/content-accordion.json",
+        "https://www.elfcosmetics.com/content/content-left-right.json",
+        "https://www.elfcosmetics.com/content/content-box.json",
+        "https://www.elfcosmetics.com/content/content-callout-message.json",
+        "https://www.elfcosmetics.com/content/content-cta.json",
+        "https://www.elfcosmetics.com/content/content-headline-text.json",
+        "https://www.elfcosmetics.com/content/content-html-block.json",
+        "https://www.elfcosmetics.com/content/content-text.json",
+        "https://www.elfcosmetics.com/content/content-video.json",
+        "https://www.elfcosmetics.com/content/discovery-group.json",
+        "https://www.elfcosmetics.com/content/feature-cards.json",
+        "https://www.elfcosmetics.com/content/hero.json",
+        "https://www.elfcosmetics.com/content/image-banner.json",
+        "https://www.elfcosmetics.com/content/instagram-post.json",
+        "https://www.elfcosmetics.com/content/lookbook-hero.json",
+        "https://www.elfcosmetics.com/content/offer-cards-products.json",
+        "https://www.elfcosmetics.com/content/promo-banner.json",
+        "https://www.elfcosmetics.com/content/seo-text.json",
+        "https://www.elfcosmetics.com/content/social-ugc.json"
+
+    ]
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_homepage">Homepage</h3>
+<div class="paragraph">
+<p>Within Amplience there have been 2 homepages setup. One for e.l.f. Cosmetics and for e.l.f. Skin. Content for each page is managed independently of each other through the page content types. Content can be shared across the pages, but it still needs to be associated with each page.</p>
+</div>
+<div class="paragraph">
+<p>Schema: <strong>homepage.json</strong></p>
+</div>
+<div class="paragraph">
+<p>Below is an example screen shot of the homepage that doesn&#8217;t necessarily reflect what&#8217;s currently on the production homepage. It was taken from the development environment and is meant to highlight and show the content names of the content items on the page as a reference.</p>
+</div>
+<div class="sect3">
+<h4 id="_e_l_f_cosmetics">e.l.f. Cosmetics</h4>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/elf-cosmetics-homepage" alt="elf cosmetics homepage">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_slots_2">Slots</h4>
+<div class="paragraph">
+<p>The homepage allows for up to ten slots on the page. Within each slot the editor can define the default content and variations that are associated with customer groups. The slots are also localized, which allows the editor to target specific content to a particular site within the same page as the US site. The diagram below shows the available content types per slot.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The content that is available within the slots is managed through a partial schema with the schema ID <strong>slot-available-content.json</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The slot-available-content.json partial schema is where the editor will maintain the available content types for the slots.</p>
+</div>
+<div class="paragraph">
+<p>Any updates to the slot-available-content.json file will require a content sync. The schemas to sync for the homepage are listed below.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Home Hero</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Home-Hero-Slot-Mapping" alt="Home Hero Slot Mapping">
+</div>
+<div class="title">Figure 5. Home Hero Slot diagram</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Homepage Hero Slot</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Schema Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.elfcosmetics.com/slot/home-hero-slot.json" class="bare">https://www.elfcosmetics.com/slot/home-hero-slot.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The schema associated with the homepage hero slot.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.elfcosmetics.com/home-hero-slot-variation.json" class="bare">https://www.elfcosmetics.com/home-hero-slot-variation.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The content item that is used to create the variations using customer groups.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Homepage Content Slot(s)</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Home-Content-Slot-Mapping" alt="Home Content Slot Mapping">
+</div>
+<div class="title">Figure 6. Homepage Content Slot Diagram</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Homepage Content Slot</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 10%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Schema Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.elfcosmetics.com/slot/home-content-slot.json" class="bare">https://www.elfcosmetics.com/slot/home-content-slot.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The schema associated with the homepage content slot.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.elfcosmetics.com/content/home-content-slot-variation.json" class="bare">https://www.elfcosmetics.com/content/home-content-slot-variation.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The content item that is used to create the variations using customer groups.</p></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary class="title">Homepage allowed content types partials example.</summary>
+<div class="content">
+<div id="homeContentSlotExample" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-JSON" data-lang="JSON">"home-hero-slot":{
+	"enum":[
+		"https://www.elfcosmetics.com/content/banner.json",
+		"https://www.elfcosmetics.com/content/banner-side-by-side.json",
+		"https://www.elfcosmetics.com/content/hero.json",
+		"https://www.elfcosmetics.com/content/hero-side-by-side.json",
+		"https://www.elfcosmetics.com/content/image-banner.json",
+		"https://www.elfcosmetics.com/content/loyalty-bar.json",
+		"https://www.elfcosmetics.com/content/promo-banner.json",
+		"https://www.elfcosmetics.com/content/subnav-bar.json"
+	]
+},
+"home-content-slot":{
+	"enum":[
+		"https://www.elfcosmetics.com/content/banner.json",
+		"https://www.elfcosmetics.com/content/banner-side-by-side.json",
+		"https://www.elfcosmetics.com/content/button-group.json",
+		"https://www.elfcosmetics.com/content/carousel-banner.json",
+		"https://www.elfcosmetics.com/content/category-tiles.json",
+		"https://www.elfcosmetics.com/content/content-html-block.json",
+		"https://www.elfcosmetics.com/content/feature-cards.json",
+		"https://www.elfcosmetics.com/content/feature-tile-list.json",
+		"https://www.elfcosmetics.com/content/image-banner.json",
+		"https://www.elfcosmetics.com/content/offer-cards-products.json",
+		"https://www.elfcosmetics.com/content/product-carousel.json",
+		"https://www.elfcosmetics.com/content/promo-banner.json",
+		"https://www.elfcosmetics.com/content/seo-text.json",
+		"https://www.elfcosmetics.com/content/social-ugc.json"
+	]
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="sect4">
+<h5 id="_slot_definition">Slot definition</h5>
+<div class="paragraph">
+<p>Slot content types can be found in one of five <strong>Slots</strong> repository under the Homepage folder as seen in the picture below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/US-Homepage-Slot-Repo-Folder" alt="US Homepage Slot Repo Folder">
+</div>
+<div class="title">Figure 7. Slot repository</div>
+</div>
+<div class="paragraph">
+<p>As part of the CMS build process, the slot definitions have already been built and associated with the homepage. Below is an example of an empty slot for the homepage. The input components for both slot types are the same and represented in the picture below.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are adding content directly to the slot in the <strong>Slots</strong> repository you will only be able to add an existing Home Hero or Home Content Variations content type.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Home-Slots-Input" alt="Home Slots Input">
+</div>
+<div class="title">Figure 8. Homepage slot input components for the Home Hero and Home Content Slots.</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Content</dt>
+<dd>
+<p>To define the default content, click on the "plus" button. The default content input allows for up to ten pieces of content.</p>
+</dd>
+<dt class="hdlist1">Variations</dt>
+<dd>
+<p>The variations are created within a content type called <strong>Home Content Slot Variation</strong> or <strong>Home Hero Slot Variation</strong>, which needs to be created before they can be added to the slot. To build content that is associated with customer groups:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the "Content" repository</p>
+</li>
+<li>
+<p>Click on the homepage folder.</p>
+</li>
+<li>
+<p>Click on "Create content" and select <strong>Home Content Slot Variation</strong> or <strong>Home Hero Slot Variation</strong> depending upon which slot you are adding variations to on the homepage.</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_adding_variations">Adding Variations</h5>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Home-Variations-Slot" alt="Home Variations Slot">
+</div>
+<div class="title">Figure 9. Selecting Variations</div>
+</div>
+<div class="paragraph">
+<p>Choose from one of the following content types based upon where in the homepage the content is to be located to add variations that will use customer groups.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Home Content Slot Variation</p>
+</li>
+<li>
+<p>Home Hero Slot Variation</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Home-Customer-Group-Variation" alt="Home Customer Group Variation">
+</div>
+<div class="title">Figure 10. Home Content Variations Input</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Customer Groups</dt>
+<dd>
+<p>Select the customer group or groups that are associated with the content.</p>
+</dd>
+<dt class="hdlist1">Rank</dt>
+<dd>
+<p>This will be used by the app to priortize which content variation is shown when a customer is in more than one customer group. The rank is a number between 1-10 where one is the hightest rank and ten the lowest.</p>
+</dd>
+<dt class="hdlist1">Content</dt>
+<dd>
+<p>Click on the "plus" button to choose the content that will be associated with the customer group. The editor can add more than one piece of content to the variation associated with a customer group.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_slot_definition">Example Slot definition</h5>
+<div class="paragraph">
+<p>The code example below comes from the Home Content Slot that shows how the "partials" were implemented into the slot component</p>
+</div>
+<details>
+<summary class="title">Homepage content slot definition.</summary>
+<div class="content">
+<div id="slotDefinition" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-JSON" data-lang="JSON">"default": {
+	"title": "Default Content",
+	"type": "array",
+	"minItems": 0,
+	"maxItems": 4,
+	"items": {
+		"allOf": [
+			{ "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content-link" },
+			{
+				"properties": {
+					"contentType": {
+						"$ref": "https://www.elfcosmetics.com/partials/slot-available-content.json#/definitions/home-content-slot"
+					}
+				}
+			}
+		]
+	}
+},
+"variations": {
+	"title": "Variations",
+	"type": "array",
+	"minItems": 0,
+	"maxItems": 10,
+	"items": {
+		"allOf": [
+			{ "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content-link" },
+			{
+				"properties": {
+					"contentType": {
+						"enum": [
+							"https://www.elfcosmetics.com/content/home-content-slot-variation.json"
+						]
+					}
+				}
+			}
+		]
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
+<hr>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="navigation-content">Navigation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The navigation is managed through the Amplience Hierarchy structure. It allows for adding top level content items that are lists or are links to pages. The list can be nested to have additional lists or list items within.</p>
+</div>
+<div class="paragraph">
+<p>The navigation content is stored in a repo called <strong>Menu</strong>. All available content types that are used to build the top navigation and footer navigation are stored in folders within the <strong>Menu</strong> repo.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Nav" alt="Nav">
+</div>
+<div class="title">Figure 11. Example navigation</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Nav-Repo" alt="Nav Repo">
+</div>
+<div class="title">Figure 12. Menu Repo</div>
+</div>
+<div class="sect2">
+<h3 id="_navigation_hierarchy">Navigation Hierarchy</h3>
+<div class="paragraph">
+<p>The navigation is built using the Amplience functionality called hierarchies. Below is a screenshot of the hierarchy that was implemented on the development system.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Nav-Hierarchy" alt="Nav Hierarchy">
+</div>
+<div class="title">Figure 13. Expanded Navigation Hierarchy</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nav_root_node">Nav Root Node</h3>
+<div class="paragraph">
+<p>The nav root node is the top of the hierarchy, which is then used to add the navigation items as either a <strong>Nav Menu Node</strong> or <strong>Single Nav Menu Node</strong>. This node does not get shown in the menu as it&#8217;s controlled by a checkbox flag called "Show in Menu?"</p>
+</div>
+<div class="paragraph">
+<p><strong>Schema</strong> - nav-root-node.json</p>
+</div>
+<div class="sect3">
+<h4 id="_add_node_to_the_hierarchy">Add node to the hierarchy:</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Put your mouse over the Root node and click on the 3 &#8230;&#8203;</p>
+</li>
+<li>
+<p>Select "<strong>Add child node</strong>"</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Root-Add-Child-Node" alt="Root Add Child Node">
+</div>
+<div class="title">Figure 14. Add child node</div>
+</div>
+</li>
+<li>
+<p>Choose to add either a "<strong>Nav Menu Node</strong>" or "<strong>Single Nav Menu Node</strong>"</p>
+</li>
+<li>
+<p>Choose "Add existing" to add an existing node or "Create and add new" to add a new item.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Root-Add-Child-Node-Modal" alt="Root Add Child Node Modal">
+</div>
+<div class="title">Figure 15. Add child node options</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only unique nodes are allowed to be added to a hierarchy as they cannot be used in more than one hierarchy.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_remove_node_from_the_navigation">Remove node from the Navigation</h4>
+<div class="paragraph">
+<p>In this scenario the node to removed from the navigation is not removed from the hierarchy. The node is still valid, but isn&#8217;t always shown in the menu.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Locate the node to be hidden in the hierarchy.</p>
+</li>
+<li>
+<p>Unselect the Show In Menu? flag and save.</p>
+</li>
+<li>
+<p>Publish the node.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_remove_node_from_the_hierarchy">Remove node from the Hierarchy</h4>
+<div class="paragraph">
+<p>In this scenario the node should be completely removed from the hierarchy.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Locate the node that is to be removed from the hierarchy and mouse over the node.</p>
+</li>
+<li>
+<p>Click the <strong>&#8230;&#8203;</strong> to bring up a sub-menu.</p>
+</li>
+<li>
+<p>Select <strong>Remove node</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Remove-Node" alt="Remove Node">
+</div>
+<div class="title">Figure 16. Remove node</div>
+</div>
+</li>
+<li>
+<p>Once the node has been removed from the hierarchy go back to the Nav Hierarchy folder.</p>
+</li>
+<li>
+<p>In the upper right hand corner click on the List Settings Button and select to show Hierarchy Child nodes show the child nodes of the main hierarchy node.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Show-Hierarchy-Child-Nodes" alt="Show Hierarchy Child Nodes">
+</div>
+<div class="title">Figure 17. Show/Hide child nodes</div>
+</div>
+</li>
+<li>
+<p>Locate the node that was removed, hover over the item and click on the <strong>&#8230;&#8203;</strong> buttons at the right of the page to bring up a sub menu.</p>
+</li>
+<li>
+<p>Click on Publish to remove the relationship between the Nav Root Node and the child node.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any nodes that are removed from the hierarchy have to be published after they have been removed in order to break the parent child relationship. If this step is not done the removed item will still be in the JSON output.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="footer-navigation-content">Footer Navigation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The footer is managed via the Amplience Hierarchy functionality, which is also how the main navigation is managed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="guides-content">Guides</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_pages">Creating Pages</h3>
+<div class="sect3">
+<h4 id="_category_page_2">Category Page</h4>
+<div class="paragraph">
+<p>All Category pages are created by a SFCC Cartridge that has been developed by 64Labs. It is recommended that no Category page be created manually and all Category pages are created using the SFCC Cartridge.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_content_page">Content Page</h4>
+<div class="paragraph">
+<p>To create a Content page:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the folder where you want to save the content page.</p>
+</li>
+<li>
+<p>Click on the <strong>Create Content</strong> button.</p>
+</li>
+<li>
+<p>Either type content page or search through the content until you find content page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Add-Content-Page" alt="Add Content Page">
+</div>
+<div class="title">Figure 18. Add Content page</div>
+</div>
+</li>
+<li>
+<p>Click on Content Page to load the Content Page content type. For more information on Conent page properties click <a href="#content-page">here</a>.</p>
+</li>
+<li>
+<p>Enter in relevent SEO information.</p>
+</li>
+<li>
+<p>Enter in relevent Page Heading information.</p>
+</li>
+<li>
+<p>Click on the <strong>+</strong> symbol within the Content input component to add content to the page.</p>
+</li>
+<li>
+<p>Save the Content Page.</p>
+</li>
+<li>
+<p>Navigate to the Config repo and find the Content page folder under the Routes folder.</p>
+</li>
+<li>
+<p>Click on <strong>Create Content</strong> to add a route.</p>
+</li>
+<li>
+<p>Click on App Route.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Add-App-Route" alt="Add App Route">
+</div>
+<div class="title">Figure 19. Add App Route</div>
+</div>
+</li>
+<li>
+<p>Add in the route that will be used for the content page.</p>
+</li>
+<li>
+<p>Select the page that was just created to create the link between the route and the page. For more information on routes click <a href="#routes">here</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_landing_page">Landing Page</h4>
+<div class="paragraph">
+<p>To create a Landing page:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the folder where you want to save the content page.</p>
+</li>
+<li>
+<p>Click on the <strong>Create Content</strong> button.</p>
+</li>
+<li>
+<p>Either type Landing page or search through the content until you find content page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Add-Landing-Page" alt="Add Landing Page">
+</div>
+<div class="title">Figure 20. Add Landing page</div>
+</div>
+</li>
+<li>
+<p>Click on Content Page to load the Content Page content type. For more information on Conent page properties click <a href="#landing-page">here</a>.</p>
+</li>
+<li>
+<p>Enter in relevent SEO information.</p>
+</li>
+<li>
+<p>Enter in relevent Page Heading information.</p>
+</li>
+<li>
+<p>Click on the <strong>+</strong> symbol within the Content input component to add content to the page.</p>
+</li>
+<li>
+<p>Save the Content Page.</p>
+</li>
+<li>
+<p>Navigate to the Config repo and find the Content page folder under the Routes folder.</p>
+</li>
+<li>
+<p>Click on <strong>Create Content</strong> to add a route.</p>
+</li>
+<li>
+<p>Click on App Route.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Add-App-Route" alt="Add App Route">
+</div>
+<div class="title">Figure 21. Add App Route</div>
+</div>
+</li>
+<li>
+<p>Add in the route that will be used for the content page.</p>
+</li>
+<li>
+<p>Select the page that was just created to create the link between the route and the page. For more information on routes click <a href="#routes">here</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publishing_content">Publishing Content</h3>
+<div class="paragraph">
+<p>Content and slot data can be published directly from within Amplience by clicking &#8230;&#8203; found on the right hand side of the page and clicking on the "Publish" menu item. In the screen shot below the homepage content is being published.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Publish-Homepage" alt="Publish Homepage">
+</div>
+<div class="title">Figure 22. Publishing Content example</div>
+</div>
+<div class="paragraph">
+<p>Content can also be published out using the scheduling feature within Amplience is descrived in the section below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scheduling_content">Scheduling content</h3>
+<div class="paragraph">
+<p>Amplience allows for planning and scheduling content using a scheduling calendar interface, which uses the concepts of events and editions.</p>
+</div>
+<div class="paragraph">
+<p>Events are used to represent major campaigns or project that have a start and end date. Within the events there can be one or more edition created that holds the content that needs to go live between the start and end dates defined in the Event.</p>
+</div>
+<div class="paragraph">
+<p>Slots will be used to specify where the content should be delivered to for each page that uses slots. The homepage, PLP and responsiblity page types (exclusive offers) are pages that have slots defined that is known to the Front End PWA.</p>
+</div>
+<div class="paragraph">
+<p>You can also schedule content without the use of slots for those pages that do not have slot definitions and aren&#8217;t using customer groups for the content. For example you could schedule a blog page to go live at a certain point on the site by building the event using content instead of slots.</p>
+</div>
+<div class="paragraph">
+<p>When creating an event there are some things to consider before setting it up, which is listed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which areas of the site is the content going to be created for.</p>
+</li>
+<li>
+<p>What content is required.</p>
+</li>
+<li>
+<p>When is the content scheduled to go live.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_creating_an_event">Creating an Event</h4>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Create-Event" alt="Create Event">
+</div>
+<div class="title">Figure 23. Scheduling calendar</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the Scheduling page by clicking on the Scheduling menu item.</p>
+</li>
+<li>
+<p>Use the Calendar to find the start date of the Event.</p>
+</li>
+<li>
+<p>Select the date and click on the Create Event button or right click and select create event.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Event-Properties-Data" alt="Event Properties Data">
+</div>
+<div class="title">Figure 24. Create Event</div>
+</div>
+</li>
+<li>
+<p>Give the event a name.</p>
+</li>
+<li>
+<p>Select the start and end date</p>
+</li>
+<li>
+<p>Add one or more locales for the event.</p>
+</li>
+<li>
+<p>Click "Save &amp; Open event" to add editions and content to the event.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Create-Edition-From-Event" alt="Create Edition From Event">
+</div>
+<div class="title">Figure 25. Empty Event page</div>
+</div>
+</li>
+<li>
+<p>Click on Create edition</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Create-Edition" alt="Create Edition">
+</div>
+<div class="title">Figure 26. Create edition dialog</div>
+</div>
+</li>
+<li>
+<p>Enter a name for the edition</p>
+</li>
+<li>
+<p>Select the start and end date for the edition.</p>
+</li>
+<li>
+<p>If you want the slot content to be empty once the edition ends click on the check box labeled "Slot content flagged to expire when edition ends".</p>
+</li>
+<li>
+<p>To create an edition based upon slots make sure that the Slots tab is selected and click on the link to "Add Slots".</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Blank-Edition" alt="Blank Edition">
+</div>
+<div class="title">Figure 27. Add Slots</div>
+</div>
+</li>
+<li>
+<p>Search the repository for the slot you want and drag it to the area on the left.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Select-Slot" alt="Select Slot">
+</div>
+<div class="title">Figure 28. Slot Repositories</div>
+</div>
+</li>
+<li>
+<p>Select the slot and add content to the slot from the right hand side.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Slot-Selected-Add-Content" alt="Slot Selected Add Content">
+</div>
+<div class="title">Figure 29. Add slot information</div>
+</div>
+</li>
+<li>
+<p>Repeat the steps to add as many slots to the edtion as needed.</p>
+</li>
+<li>
+<p>When done click on the "Schedule" button and you will see a confirmation box.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Confirm-Schedule" alt="Confirm Schedule">
+</div>
+<div class="title">Figure 30. Schedule Confirmation</div>
+</div>
+<div class="paragraph">
+<p>To preview the content on the site.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the Preview Button</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://cdn.media.amplience.net/i/elfcosmetics/Preview-Content-By-Date" alt="Preview Content By Date">
+</div>
+<div class="title">Figure 31. Preview confirmation</div>
+</div>
+</li>
+<li>
+<p>Choose Quick preview or Date/Time Preview</p>
+</li>
+<li>
+<p>Choose the Preview Application.</p>
+</li>
+<li>
+<p>Click on Preview</p>
+</li>
+<li>
+<p>To use the Date/Time preview functionality the Edition needs to be Promoted to preview.</p>
+</li>
+<li>
+<p>To do this click on the Schedule drop down button and click on Promote to preview.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="helpful-links">Helpful Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides links to the various environments, documentation and DAM used for the project.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Amplience Links</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amplience Content Hub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://content.amplience.net" class="bare">https://content.amplience.net</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amplience DAM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://ondemand.amplience.com/" class="bare">https://ondemand.amplience.com/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amplience Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://amplience.com/developers/docs/" class="bare">https://amplience.com/developers/docs/</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. Managed Runtime Links</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PWA Dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://development.elfcosmetics.com" class="bare">https://development.elfcosmetics.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PWA Staging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pwastage.elfcosmetics.com" class="bare">https://pwastage.elfcosmetics.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PWA Production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pwaprod.elfcosmetics.com" class="bare">https://pwaprod.elfcosmetics.com</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-09-07 12:47:10 -0400
+</div>
+</div>
+</body>
+</html>

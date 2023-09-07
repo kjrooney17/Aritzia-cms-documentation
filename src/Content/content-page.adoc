@@ -1,0 +1,38 @@
+[#content-page]
+=== Content Page
+
+The content page can be used for many different designs based upon the number of available components for this page type. Many of the footer link pages have been re-created using the content page type.
+
+*Schema* - content-page.json"
+
+.Example Award-Winning and Viral TikTok Makeup Gift Guide content page
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Page-Example1[]
+
+
+//.Content Page input
+//image::https://assets.iceland.co.uk/i/iceland/Content-Page-Input[]
+
+==== BreadCrumb
+
+.Breadcrumb
+image::https://cdn.media.amplience.net/i/elfcosmetics/Bread-Crumb[]
+
+Breadcrumb::
+This allows the content editor to manually add a breadcrumb to the page. Available color options are below. To add a breadcrumb trail click on the "Add BreadCrumb" button.
+
+.Breadcrumb input components
+image::https://cdn.media.amplience.net/i/elfcosmetics/Bread-Crumb-Input[]
+
+CTA Text::
+The label for the Breadcrumb.
+
+CTA Link::
+
+
+
+
+==== Slot
+
+include::content-page-slot.adoc[]
+
+---

@@ -1,0 +1,17 @@
+.Menu Definition
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-Node-Menu-Definition[]
+
+Display Name::
+This is the name that will be displayed within the navigation.
+
+Display menu item for::
+This controls if the menu item is shown based upon the dropdown of avialable choices for eShop customers only.
+
+.Display menu item for options
+image::https://cdn.media.amplience.net/i/elfcosmetics/Display-Menu-Options-eshop[]
+
+Text Color::
+This applies a text color to the display name.
+
+.Available text colors
+image::https://cdn.media.amplience.net/i/elfcosmetics/Text-Color[]

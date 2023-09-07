@@ -1,0 +1,24 @@
+{
+  "name": "aritzia-cms-documentation",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "asciidoc": "asciidoctor -D public -o index.html src/Aritzia-components.adoc",
+    "build": "npm run clean && npm run asciidoc && npm run copy-assets",
+    "clean": "rm -rf public",
+    "copy-assets": "cp -R assets/* public/",
+    "watch": "nodemon --watch src -e adoc,css,html --exec 'npm run build'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "64labs",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "asciidoctor": "^2.2.6",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "@vercel/edge": "^0.3.2"
+  }
+}

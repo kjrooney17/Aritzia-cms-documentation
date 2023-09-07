@@ -1,0 +1,35 @@
+== Customer Groups
+
+This section will outline how to work with customer groups within Amplience to get the correct content onto the site for the correct group or default content.
+
+=== Slots
+
+The managing of content on the Homepage, Category page and Sticky Banners is done through the use of slots. The slots that are associated with the homepage and Category pages are referenced in a page object for the page type. The customer group and content association is made within the Homepage slots and the Category Banner & Bottom slots. The slot for positioning content within the grid uses a content type to control the positioning within the grid and the customer groups.
+
+=== Homepage slots
+
+include::../Content/homepage-slots.adoc[]
+
+---
+
+=== Category Page Slots
+
+include::../Content/category-page-slots.adoc[]
+
+=== Content Page Slots
+
+include::../Content/content-page-slot.adoc[]
+
+=== Global Mini Cart Slot
+
+include::../Content/global-mini-cart-slot.adoc[]
+
+=== Search Results Page Slots
+
+include::../Content/category-page-slots.adoc[]
+
+=== Sticky Banner Slots
+
+include::../Content/sticky-banner-slots.adoc[]
+
+---

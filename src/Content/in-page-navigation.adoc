@@ -1,0 +1,15 @@
+[#in-page-navigation]
+### In Page Navigation
+
+
+.In Page Navigation Links
+[.in-page-nav-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavigation/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/inPageNavItem/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/in-page-navigation
+|===

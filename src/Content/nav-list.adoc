@@ -1,0 +1,52 @@
+[#nav-list]
+=== Nav List
+
+The nav list is used to create additional menu levels and can consist of nav lists or nav list items. 
+
+*Schema* - nav-list.json
+
+==== Example
+
+.Example Nav List
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List[]
+
+==== Input Components
+
+.Nav List Input Components
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Input[]
+
+---
+
+===== Menu Definition
+include::menu-definition-nav-list.adoc[]
+
+---
+
+==== Menu Content
+
+This is where the content for the menu is added. The options are to add a *Nav List* or <<nav-list-item,*Nav List Item*>>.
+
+.Menu Content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Menu-Content[]
+
+.Available content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Add-Menu-Content[]
+
+---
+
+===== Flyout Content
+
+This is where the editor can choose to add flyout content to the nav list. For more information on the Flyout content click <<nav-flyout,here>>
+
+.Nav List Flyout
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Flyout[]
+
+To add Flyout content click on the "+" symbol.
+
+.Add Flyout Content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Add-Flyout-Content[]
+
+---
+
+
+

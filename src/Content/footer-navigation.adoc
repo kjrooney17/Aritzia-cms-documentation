@@ -1,0 +1,5 @@
+[#footer-navigation-content]
+== Footer Navigation
+
+The footer is managed via the Amplience Hierarchy functionality, which is also how the main navigation is managed.
+

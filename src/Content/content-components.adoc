@@ -1,0 +1,38 @@
+[#content-components]
+== Content Components
+
+[.component-grid]
+[cols="3,3,3,3"]
+|===
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-accordion@2x[link="#content-accordion"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-box@2x[link="#content-box"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-callout-message@2x[link="#content-call-out-message"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-cta@2x[link="#content-cta"]
+
+^|<<content-accordion, Content Accordion>>
+^|<<content-box, Content Box>>
+^|<<content-call-out-message, Content Call Out Message>>
+^|<<content-cta,Content CTA>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-headline-text@2x[link="#content-headline-text"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-html-block@2x[link="#content-html"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-alternating-text-image@2x[link="#content-alternating-text-image"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-text@2x[link="#content-text"]
+
+^|<<content-headline-text, Content Headline Text>>
+^|<<content-html-block, Content HTML Block>>
+^|<<content-alternating-text-image, Content Alternating Text Image>>
+^|<<content-text, Content Text>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-content-video@2x[link="#content-video"]
+|
+|
+|
+
+^|<<content-video, Content Video>>
+|
+|
+|
+|===
+

@@ -1,0 +1,15 @@
+=== Category Page
+
+The category page was automatically created by fetching all category information from SFCC and populating the page information that will be discussed below.
+
+
+
+
+==== Slots
+
+The slots on the Category (PLP) page are localized so that content can be unique across the defined locales (see below). If a localized slot is empty there is no fallback content available and no content will be displayed for that locale.
+
+
+include::category-page-slots.adoc[]
+
+---

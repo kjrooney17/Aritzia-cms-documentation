@@ -1,0 +1,39 @@
+=== Single Nav Menu Node
+
+This is used when the top level node is only a link to a page and doesn't require any additional nav list or nav list items to be underneath the node.
+
+*Schema* - single-nav-menu-node.json
+
+==== Example
+
+.Example Single Item Nav Menu Node
+image::https://cdn.media.amplience.net/i/elfcosmetics/Single-Nav-Menu-Node-Example[]
+
+==== Input Components
+
+.Single Item Nav Menu Node input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Single-Nav-Menu-Node-Input[]
+
+---
+
+===== Help
+
+About Single Nav Menu Node::
+Help section describing how this content type is used.
+
+.Nav Menu Node help
+image::https://cdn.media.amplience.net/i/elfcosmetics/About-Single-Nav-Menu-Node[]
+
+---
+
+===== Customer Groups
+
+include::customer-groups.adoc[]
+
+---
+
+===== Menu Definition
+
+include::menu-definition-nav-node.adoc[]
+
+include::nav-routes.adoc[]

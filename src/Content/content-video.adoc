@@ -1,0 +1,132 @@
+[#content-video]
+=== Content Video
+
+*Schema* - content-video.json
+
+==== Example
+
+.Video example
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Video-Example1[]
+
+==== New
+
+To create a Content Video :
+
+. Navigate to the Content repository.
+. Navigate to the folder where the Content Video will be saved.
+. click on the *Create Content* Button.
++
+.Content Video
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-Content-Video[]
++
+. Search by typing Content Video or scroll through the list to find the Content Video
+. Click on the Content Videor Component type.
+
+==== Input Components
+
+.Content Video Input Components
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Video-Input[]
+
+---
+
+===== Amplience Video
+
+include::amplience-video.adoc[]
+
+---
+
+===== Vimeo Video
+
+include::vimeo-video.adoc[]
+
+---
+
+===== YouTube Video
+
+.YouTube Video Input
+image::https://cdn.media.amplience.net/i/elfcosmetics/YouTube-Video[]
+
+To add a video from YouTube:
+
+. Click on the "Add YouTube Video" button.
+. Enter the Video ID of the YouTube video.
+. Select Screen Size if a separate video is needed for Desktop, Tablet or mobile.
+. Leave the Screen Size option blank if a single video is to be used for all viewports.
+. Repeat for all devices that are needed.
+
+---
+
+===== Layout
+
+.Layout options
+image::https://cdn.media.amplience.net/i/elfcosmetics/Video-Layout-Options[]
+
+Video Size::
+This will control the container size for the video. The options are
+
+. 1496px
+. 900px
+. 600px
+
+Background Image::
+Optional background image that will be displayed behind the video area.
+
+Background Color::
+Optional color option that will be behind the video area.
+
+.Available background colors
+image::https://cdn.media.amplience.net/i/elfcosmetics/Background-Color[]
+
+---
+
+===== Text Controls
+
+Text Alignment::
+This will align the headline and body text. Options are Left, Center, Right. The default value is Left aligned.
+
+---
+
+===== Headline Text
+
+.Headline Controls
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Video-Headline[]
+
+Headline::
+Optional headline that will appear above the video.
+
+Headline Size::
+Sets the size of the headline. Options are Small, Medium and Large.
+
+Headline Color::
+Set the color of the headline text.
+
+.Available headline colors
+[%collapsible]
+====
+image::https://cdn.media.amplience.net/i/elfcosmetics/Headline-Text-Colors[]
+====
+
+---
+
+===== Body Text
+
+.Body Controls
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Video-Text[]
+
+Body Text::
+Optional body text that will appear beneath the headline if present.
+
+Text color::
+Sets the color of the body text.
+
+.Available Text Colors
+[%collapsible]
+====
+image::https://cdn.media.amplience.net/i/elfcosmetics/Text-Color[]
+====
+
+===== Schema.org
+
+include::schema-org.adoc[]
+
+---

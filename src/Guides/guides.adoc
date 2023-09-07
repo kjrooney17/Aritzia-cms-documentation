@@ -1,0 +1,6 @@
+[#guides-content]
+== Guides
+
+include::creating-pages.adoc[]
+
+include::publishing-content.adoc[]

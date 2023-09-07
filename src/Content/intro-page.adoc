@@ -1,0 +1,17 @@
+== Introduction
+
+image::https://cdn.media.amplience.net/i/elfcosmetics/elf-intro-image[]
+
+This document outlines in detail the Amplience CMS implementation for e.l.f. Cosmetics. The following list of items are discussed within this document.
+
+* All <<merchandising-components,Merchandising Components>> defined with examples.
+* All <<content-components,Content Components>> defined with examples.
+* <<discovery-components,Discovery/Lookbook Components>> defined with examples.
+* <<global-components,Global content>>.
+* All <<page-content,page types>> and how to work with the pages/slots on the page.
+* How to manage the <<navigation-content,Navigation>>.
+* How to manage the <<footer-navigation-content,Footer Navigation>>.
+* <<partials-content,Partials>>, which are content items not specifically associated with any page.
+* <<schema-partials-content,Schema Partials>>.
+* <<guides-content,Guides>>.
+* <<helpful-links, Helpful Links>>.

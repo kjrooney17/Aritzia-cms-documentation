@@ -1,0 +1,144 @@
+@import "https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css";
+
+/* place custom style overrides below */
+
+/* ----- Global Styles --------------------- */
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+#header,
+#content,
+#footnotes,
+#footer {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+a {
+  color: #333;
+}
+
+a:hover,
+a:focus {
+  color: #333;
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 0;
+  word-spacing: normal;
+}
+h1 {
+  font-weight: bold;
+}
+h3 {
+  font-weight: bold;
+}
+.sect3 {
+  padding: 1em;
+  border-top: solid 1px #eaeaea;
+}
+.imageblock {
+  background-color: #f2f2f2;
+  padding: 30px;
+}
+.imageblock .title {
+  color: #333;
+  margin-top: 6px;
+  font-style: normal;
+}
+
+.imageblock > .title {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+table.tableblock > .title {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  color: #333;
+  font-style: normal;
+}
+
+div[name="_introduction"] {
+  margin-top: 20px;
+}
+
+.component-grid td.tableblock {
+  border: 0;
+}
+
+/* ----- Table of Contents Styles --------------------- */
+#toc.toc2 #toctitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75em;
+  color: #333;
+  border-bottom: 1px solid #dddddf;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.tocify-header {
+  font-weight: 400;
+}
+.tocify-subheader {
+  font-style: normal;
+  font-size: 96%;
+}
+.tocify-focus {
+  color: #1565c0;
+}
+.tocify-focus > a {
+  color: #1565c0;
+}
+#toc a {
+  color: #333;
+}
+#toc ul {
+  font-family: "Roboto", sans-serif;
+  margin-left: 0;
+}
+#toc li {
+  margin-top: 0.4em;
+}
+#toc a:hover {
+  color: #333;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.tocify-item.ui-widget-content.ui-state-default {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  #toc.toc2 #toctitle {
+    font-size: 0.75em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #header,
+  #content,
+  #footnotes,
+  #footer {
+    width: 100%;
+    margin: 0;
+    max-width: 62.5em;
+  }
+}

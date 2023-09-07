@@ -1,0 +1,6 @@
+[#global-components]
+== Global Components
+
+include::concierge-block.adoc[]
+
+include::message-banner.adoc[]

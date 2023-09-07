@@ -1,0 +1,22 @@
+= Aritzia Contentful CMS Documentation
+include::variables.adoc[]
+
+include::Content/intro-page.adoc[]
+
+include::Content/merchandising-components.adoc[]
+
+include::Content/content-components.adoc[]
+
+include::Content/pdp-components.adoc[]
+
+include::Content/global.adoc[]
+
+include::Content/pages.adoc[]
+
+include::Content/navigation.adoc[]
+
+include::Content/footer-navigation.adoc[]
+
+include::Guides/guides.adoc[]
+
+include::Guides/helpful-links.adoc[]

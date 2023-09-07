@@ -1,0 +1,9 @@
+[#content-accordion]
+=== Content Accordion
+
+*Content Model* - content-accordion.json
+
+==== Example
+
+/
+

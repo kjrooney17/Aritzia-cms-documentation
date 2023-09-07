@@ -1,0 +1,18 @@
+[#pdp-components]
+== PDP Components
+
+[.pdp-components-grid]
+[cols="3,3,3,3"]
+|===
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner@2x[link="#pdp-compare-sizes"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner-side-by-side@2x[link="#pdp-content-feature"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-button-group@2x[link="#pdp-ugc-carousel"]
+|
+
+^|<<pdp-compare-sizes, PDP Compare Sizes>>
+^|<<pdp-content-feature,PDP Content Feature>>
+^|<<pdp-ugc-carousel,PDP UGC Carousel>>
+|
+
+|===

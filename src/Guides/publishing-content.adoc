@@ -1,0 +1,86 @@
+=== Publishing Content
+
+Content and slot data can be published directly from within Amplience by clicking ... found on the right hand side of the page and clicking on the "Publish" menu item. In the screen shot below the homepage content is being published.
+
+.Publishing Content example
+image::https://cdn.media.amplience.net/i/elfcosmetics/Publish-Homepage[]
+
+Content can also be published out using the scheduling feature within Amplience is descrived in the section below.
+
+=== Scheduling content
+
+Amplience allows for planning and scheduling content using a scheduling calendar interface, which uses the concepts of events and editions.
+
+Events are used to represent major campaigns or project that have a start and end date. Within the events there can be one or more edition created that holds the content that needs to go live between the start and end dates defined in the Event.
+
+Slots will be used to specify where the content should be delivered to for each page that uses slots. The homepage, PLP and responsiblity page types (exclusive offers) are pages that have slots defined that is known to the Front End PWA.
+
+You can also schedule content without the use of slots for those pages that do not have slot definitions and aren't using customer groups for the content. For example you could schedule a blog page to go live at a certain point on the site by building the event using content instead of slots.
+
+When creating an event there are some things to consider before setting it up, which is listed below.
+
+* Which areas of the site is the content going to be created for.
+* What content is required.
+* When is the content scheduled to go live.
+
+==== Creating an Event
+
+.Scheduling calendar
+image::https://cdn.media.amplience.net/i/elfcosmetics/Create-Event[]
+
+. Navigate to the Scheduling page by clicking on the Scheduling menu item.
+. Use the Calendar to find the start date of the Event.
+. Select the date and click on the Create Event button or right click and select create event.
++
+.Create Event
+image::https://cdn.media.amplience.net/i/elfcosmetics/Event-Properties-Data[]
++
+. Give the event a name.
+. Select the start and end date
+. Add one or more locales for the event.
+. Click "Save & Open event" to add editions and content to the event.
++
+.Empty Event page
+image::https://cdn.media.amplience.net/i/elfcosmetics/Create-Edition-From-Event[]
++
+. Click on Create edition
++
+.Create edition dialog
+image::https://cdn.media.amplience.net/i/elfcosmetics/Create-Edition[]
++
+. Enter a name for the edition
+. Select the start and end date for the edition.
+. If you want the slot content to be empty once the edition ends click on the check box labeled "Slot content flagged to expire when edition ends".
+. To create an edition based upon slots make sure that the Slots tab is selected and click on the link to "Add Slots".
++
+.Add Slots
+image::https://cdn.media.amplience.net/i/elfcosmetics/Blank-Edition[]
++
+. Search the repository for the slot you want and drag it to the area on the left.
++
+.Slot Repositories
+image::https://cdn.media.amplience.net/i/elfcosmetics/Select-Slot[]
++
+. Select the slot and add content to the slot from the right hand side.
++
+.Add slot information
+image::https://cdn.media.amplience.net/i/elfcosmetics/Slot-Selected-Add-Content[]
++
+. Repeat the steps to add as many slots to the edtion as needed. 
+. When done click on the "Schedule" button and you will see a confirmation box.
+
+.Schedule Confirmation
+image::https://cdn.media.amplience.net/i/elfcosmetics/Confirm-Schedule[]
+
+To preview the content on the site.
+
+. Click on the Preview Button
++
+.Preview confirmation
+image::https://cdn.media.amplience.net/i/elfcosmetics/Preview-Content-By-Date[]
++
+. Choose Quick preview or Date/Time Preview
+. Choose the Preview Application.
+. Click on Preview
+. To use the Date/Time preview functionality the Edition needs to be Promoted to preview.
+. To do this click on the Schedule drop down button and click on Promote to preview.

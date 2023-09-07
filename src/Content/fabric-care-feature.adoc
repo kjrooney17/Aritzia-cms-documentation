@@ -1,0 +1,12 @@
+[#fabric-care-feature]
+=== Fabric Care Feature
+
+.Fabric Care Feature Links
+[.fabric-care-feature-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/fabricCareFeature/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/fabric-care-feature
+|===

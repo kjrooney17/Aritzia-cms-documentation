@@ -1,0 +1,14 @@
+[#hero-split-container]
+### Hero Split Container
+
+.Hero Split Container Links
+[.hero-split-container-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplitContainer/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/heroSplit/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hero-split
+|===

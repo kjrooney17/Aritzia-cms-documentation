@@ -1,0 +1,14 @@
+[#hero]
+=== HP Hero Promo
+
+.HP Hero Promo Links
+[.hero-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/hpHeroPromo/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/hp-hero-promo
+|===

@@ -1,0 +1,13 @@
+//:imagesdir: ../../resources/images
+//:data-uri:
+:toc: left
+:toclevels: 3
+:toc-title: Aritzia CMS Documentation
+:icons: font
+//:imagesdir: https://cdn.media.amplience.net/i/elfcosmetics/
+:stylesheet: styles.css
+:stylesdir: CSS
+:docinfo: shared
+
+//https://res.cloudinary.com/dmludcfvo/image/upload/v1691759878/editorial/_64build-temp/icons/removable-hood_tx97zo.svg
+//https://res.cloudinary.com/dmludcfvo/image/upload/v1694033631/editorial/_64build-temp/fa23-wk2-08-08-hp-pt1-d_y55hdg.jpg

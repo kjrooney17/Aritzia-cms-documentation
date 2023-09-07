@@ -1,0 +1,14 @@
+[#brand-product-grid]
+
+=== Brand Product Grid
+
+
+.Brand Product Grid Links
+[.brand-product-grid-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/brandProductGrid/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/brand-product-grid
+|===

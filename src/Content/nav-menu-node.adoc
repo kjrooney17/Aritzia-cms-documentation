@@ -1,0 +1,61 @@
+=== Nav Menu Node
+
+The nav menu node is the top level node that shows in the navigation that allows the editor to build out one of the following types:
+
+. <<nav-group, Nav Group>>
+. <<nav-list, Nav List>>
+. <<nav-list-item, Nav list Item>>
+
+*Schema* - nav-menu-node.json
+
+==== Example
+
+.Example Nav Menu Node
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-Example1[]
+
+==== New
+
+.Nav Menu Node Input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Root-Add-Child-Node-Modal[]
+
+---
+
+==== Input Components
+
+.Nav Menu Node Input Components
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-Menu-Node-Input[]
+
+---
+
+===== Help
+
+About Nav Menu Node::
+Help section describing how this content type is used.
+
+.Nav Menu Node help
+image::https://cdn.media.amplience.net/i/elfcosmetics/About-Nav-Menu-Node[]
+
+---
+
+===== Customer Groups
+
+include::customer-groups.adoc[]
+
+---
+
+===== Menu Definition
+
+include::menu-definition-nav-node.adoc[]
+
+---
+
+===== Menu Content
+
+This is where the content for the menu is added. The options are to add a *<<nav-group, Nav Group>>*,
+*<<nav-list, Nav List>>*, or *<<nav-list-item, Nav list Item>>*
+
+.Menu Content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Menu-Content[]
+
+.Available content
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-Menu-Content[]

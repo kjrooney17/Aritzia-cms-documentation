@@ -1,0 +1,53 @@
+[#content-text]
+=== Content Text
+
+*Schema* - content-text.json
+
+==== Example
+
+.Example Content Text
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Text-MaxWidth-Examples[]
+
+==== New
+
+To create a Content Text image :
+
+. Navigate to the Content repository.
+. Navigate to the folder where the Content  Text image will be saved.
+. click on the *Create Content* Button.
++
+.Content Text
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-Content-Text[]
++
+. Search by typing Content Alternating Text image or scroll through the list to find the Content Text image
+. Click on the Content Text image Component type.
+
+==== Input Components
+
+.Content Text input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Text[]
+
+Text Alignment::
+This will set the text alignment for the rich text area. The choices are Left, Center and Right with Left being the default setting.
+
+include::desktop-container-max-width.adoc[]
+
+Text Area::
+This is where the body text is entered using the rich text editor that allows for the following:
+
+* Undo
+* Redo
+* Row styling (Normal, H1, H2, H3)
+* Bold Text
+* Italic Text
+* Link embed.
+* Bullet list
+* Number list
+* Image
+* Horizontal Rule
+* Table
+
+.Example Image within Content Text
+image::https://cdn.media.amplience.net/i/elfcosmetics/Content-Text-with-Image[]
+
+---

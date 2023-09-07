@@ -1,0 +1,190 @@
+The homepage allows for up to ten slots on the page. Within each slot the editor can define the default content and variations that are associated with customer groups. The slots are also localized, which allows the editor to target specific content to a particular site within the same page as the US site. The diagram below shows the available content types per slot.
+
+[NOTE]
+====
+The content that is available within the slots is managed through a partial schema with the schema ID *slot-available-content.json*. 
+
+The slot-available-content.json partial schema is where the editor will maintain the available content types for the slots.
+
+Any updates to the slot-available-content.json file will require a content sync. The schemas to sync for the homepage are listed below.
+====
+
+*Home Hero*
+
+.Home Hero Slot diagram
+image::https://cdn.media.amplience.net/i/elfcosmetics/Home-Hero-Slot-Mapping[]
+
+.Homepage Hero Slot
+[cols="5,1,4"]
+|===
+|Schema Name|Type|Description
+
+|https://www.elfcosmetics.com/slot/home-hero-slot.json
+|Slot
+|The schema associated with the homepage hero slot.
+
+
+|https://www.elfcosmetics.com/home-hero-slot-variation.json
+|Content
+|The content item that is used to create the variations using customer groups.
+|===
+
+
+*Homepage Content Slot(s)*
+
+.Homepage Content Slot Diagram
+image::https://cdn.media.amplience.net/i/elfcosmetics/Home-Content-Slot-Mapping[]
+
+.Homepage Content Slot
+[cols="5,1,4"]
+|===
+|Schema Name|Type|Description
+
+|https://www.elfcosmetics.com/slot/home-content-slot.json
+|Slot
+|The schema associated with the homepage content slot.
+
+
+|https://www.elfcosmetics.com/content/home-content-slot-variation.json
+|Content
+|The content item that is used to create the variations using customer groups.
+|===
+
+
+.Homepage allowed content types partials example.
+[%collapsible]
+====
+[#homeContentSlotExample,JSON]
+----
+"home-hero-slot":{
+	"enum":[
+		"https://www.elfcosmetics.com/content/banner.json",
+		"https://www.elfcosmetics.com/content/banner-side-by-side.json",
+		"https://www.elfcosmetics.com/content/hero.json",
+		"https://www.elfcosmetics.com/content/hero-side-by-side.json",
+		"https://www.elfcosmetics.com/content/image-banner.json",
+		"https://www.elfcosmetics.com/content/loyalty-bar.json",
+		"https://www.elfcosmetics.com/content/promo-banner.json",
+		"https://www.elfcosmetics.com/content/subnav-bar.json"
+	]
+},
+"home-content-slot":{
+	"enum":[
+		"https://www.elfcosmetics.com/content/banner.json",
+		"https://www.elfcosmetics.com/content/banner-side-by-side.json",
+		"https://www.elfcosmetics.com/content/button-group.json",
+		"https://www.elfcosmetics.com/content/carousel-banner.json",
+		"https://www.elfcosmetics.com/content/category-tiles.json",
+		"https://www.elfcosmetics.com/content/content-html-block.json",
+		"https://www.elfcosmetics.com/content/feature-cards.json",
+		"https://www.elfcosmetics.com/content/feature-tile-list.json",
+		"https://www.elfcosmetics.com/content/image-banner.json",
+		"https://www.elfcosmetics.com/content/offer-cards-products.json",
+		"https://www.elfcosmetics.com/content/product-carousel.json",
+		"https://www.elfcosmetics.com/content/promo-banner.json",
+		"https://www.elfcosmetics.com/content/seo-text.json",
+		"https://www.elfcosmetics.com/content/social-ugc.json"
+	]
+}
+----
+====
+
+===== Slot definition
+
+Slot content types can be found in one of five *Slots* repository under the Homepage folder as seen in the picture below.
+
+.Slot repository
+image::https://cdn.media.amplience.net/i/elfcosmetics/US-Homepage-Slot-Repo-Folder[]
+
+As part of the CMS build process, the slot definitions have already been built and associated with the homepage. Below is an example of an empty slot for the homepage. The input components for both slot types are the same and represented in the picture below.
+
+[NOTE]
+====
+If you are adding content directly to the slot in the *Slots* repository you will only be able to add an existing Home Hero or Home Content Variations content type.
+
+====
+
+.Homepage slot input components for the Home Hero and Home Content Slots. 
+image::https://cdn.media.amplience.net/i/elfcosmetics/Home-Slots-Input[]
+
+Default Content::
+To define the default content, click on the "plus" button. The default content input allows for up to ten pieces of content.
+
+Variations::
+The variations are created within a content type called *Home Content Slot Variation* or *Home Hero Slot Variation*, which needs to be created before they can be added to the slot. To build content that is associated with customer groups: 
+
+. Navigate to the "Content" repository 
+. Click on the homepage folder. 
+. Click on "Create content" and select *Home Content Slot Variation* or *Home Hero Slot Variation* depending upon which slot you are adding variations to on the homepage.
+
+===== Adding Variations
+
+.Selecting Variations
+image::https://cdn.media.amplience.net/i/elfcosmetics/Home-Variations-Slot[]
+
+Choose from one of the following content types based upon where in the homepage the content is to be located to add variations that will use customer groups.
+
+* Home Content Slot Variation
+* Home Hero Slot Variation
+
+.Home Content Variations Input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Home-Customer-Group-Variation[]
+
+Customer Groups::
+Select the customer group or groups that are associated with the content.
+
+Rank::
+This will be used by the app to priortize which content variation is shown when a customer is in more than one customer group. The rank is a number between 1-10 where one is the hightest rank and ten the lowest.
+
+Content::
+Click on the "plus" button to choose the content that will be associated with the customer group. The editor can add more than one piece of content to the variation associated with a customer group.
+
+===== Example Slot definition
+
+The code example below comes from the Home Content Slot that shows how the "partials" were implemented into the slot component
+
+.Homepage content slot definition.
+[%collapsible]
+====
+[#slotDefinition,JSON]
+----
+"default": {
+	"title": "Default Content",
+	"type": "array",
+	"minItems": 0,
+	"maxItems": 4,
+	"items": {
+		"allOf": [
+			{ "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content-link" },
+			{
+				"properties": {
+					"contentType": {
+						"$ref": "https://www.elfcosmetics.com/partials/slot-available-content.json#/definitions/home-content-slot"
+					}
+				}
+			}
+		]
+	}
+},
+"variations": {
+	"title": "Variations",
+	"type": "array",
+	"minItems": 0,
+	"maxItems": 10,
+	"items": {
+		"allOf": [
+			{ "$ref": "http://bigcontent.io/cms/schema/v1/core#/definitions/content-link" },
+			{
+				"properties": {
+					"contentType": {
+						"enum": [
+							"https://www.elfcosmetics.com/content/home-content-slot-variation.json"
+						]
+					}
+				}
+			}
+		]
+	}
+}
+----
+====

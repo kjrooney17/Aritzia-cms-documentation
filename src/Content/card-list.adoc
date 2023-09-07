@@ -1,0 +1,17 @@
+[#card-list]
+### Card List
+
+
+.Card List Links
+[.card-list-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/cardList/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/card/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/productCard/fields
+
+|Example Content|https://aritzia-pwa-development.mobify-storefront.com/en/component-guide/card-list
+|===

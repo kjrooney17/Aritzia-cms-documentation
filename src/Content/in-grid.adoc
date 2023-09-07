@@ -1,0 +1,58 @@
+=== In-Grid Content
+
+This section will discuss working with the two In-Grid cards and how to add them into a product grid.
+
+* <<in-grid-card,In-Grid Card>>
+* <<in-grid-split-card,Split In-Grid Card>>
+
+.In-Grid Mapping
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Mapping[]
+
+[NOTE]
+====
+It is recommended to create the In-Grid content before trying to associated the content with a slot and page. When creating a slot for the In-Grid content the only option will be to add an existing piece of content.
+====
+
+==== Create In-Grid Positioning
+
+. Create the In-Grid Content for the PLP including any variations by Customer Group.
+. Create an In-Grid Positioning Content Type.
++
+.In-Grid Positioning
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-In-Grid-Positioning[]
++
+. Click on the *Add In Grid Position* button.
++
+.Add In Grid Position.
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Position[]
++
+. Enter the position number where the content should be placed into the grid.
++
+.Positioning default/variations
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Position-Input[]
+. Click on the *plus* symbol to add the default content to be displayed in the defined position.
+. Select either the In-Grid Card or the Split In-Grid Card.
+. To add an existing click on *Add existing* and select the component.
+. To add new In-Grid content click on the *Create and add new* button.
++
+.Add In-Grid
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-In-Grid-Split[]
+. To add Variations based upon customer groups click on the *plus* symbol in the In-Grid Variations input.
+. Select In-Grid Content Variation.
++
+.In-Grid Content Variation
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Content-Variations[]
++
+. Click on *Add Existing* to add an existing variation associated with a customer group or click on *Create and add new* button to create a new variation based upon a customer group.
+
+==== In-Grid Variations
+
+.In-Grid Variation Input Components
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Variation-Input[]
+
+include::customer-groups.adoc[]
+
+In-Grid Content::
+Select either an In-Grid Card or a Split In-Grid Card.
+.Add In-Grid
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-In-Grid-Split[]

@@ -1,0 +1,98 @@
+[#merchandising-components]
+== Merchandising Components
+
+[.merchandising-grid]
+[cols="3,3,3,3"]
+|===
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner@2x[link="#brand-product-grid"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-banner-side-by-side@2x[link="#card-list"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-button-group@2x[link="#category-swiper"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-carousel-banner@2x[link="#category-swiper-tab"]
+
+^|<<brand-product-grid,Brand Product Grid>>
+^|<<card-list,Card List>>
+^|<<category-swiper, Category Swiper>>
+^|<<category-swiper-tab, Category Swiper Tab>>
+
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-countdown-timer@2x[link="#fabric-care-feature"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-feature-cards@2x[link="hero-split-container"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-feature-tile-list@2x[link="#hero"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero@2x[link="#in-page-navigation"]
+
+^|<<fabric-care-feature, Fabric Care Feature>>
+^|<<hero-split-container, Hero Split Container>>
+^|<<hero, HP Hero Promo>>
+^|<<in-page-navigation,In Page Navigation>>
+
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero-inset-video@2x[link="#plp-category-banner"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-hero-side-by-side@2x[link="#product-card"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-Image-banner@2x[link="#product-swiper"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-card@2x[link="#promo-card-1up"]
+
+
+^|<<plp-category-banner, PLP Category Banner>>
+^|<<product-card,Product Card>>
+^|<<product-swiper, Product Swiper>>
+^|<<promo-card-1up, Promo Card 1UP>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x[link="#promo-card-3up"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x[link="#promo-card-4up"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x[link=#sticky-nav-banner]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x[link="#story-tile-layout-1up"]
+
+^|<<promo-card-3up, Promo Card 3UP>>
+^|<<promo-card-4up, Promo Card 4UP>>
+^|<<sticky-nav-banner, Sticky Nav Banner>>
+^|<<story-tile-layout-1up, Story Tile Layout 1Up>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x[link="#story-tile-layout-2up"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x[link="#story-tile-layout-2up-varied"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x[link=#story-tile-layout-2up-1up]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x[link="#story-tile-layout-3up"]
+
+^|<<story-tile-layout-2up, Story Tile Layout 2Up>>
+^|<<story-tile-layout-2up-varied, Story Tile Layout 2Up Varied>>
+^|<<story-tile-layout-2up-1up, Story Tile Layout 2Up 1Up>>
+^|<<story-tile-layout-3up, Story Tile Layout 3Up>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-in-grid-split-card@2x[link="#story-tile-layout-4up"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-loyalty-bar@2x[link="#story-with-products"]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-offer-card-products@2x[link=#swiper]
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-social-ugc@2x[link="#text-banner"]
+
+^|<<story-tile-layout-4up, Story Tile Layout 4Up>>
+^|<<story-with-products, Story with Products>>
+^|<<swiper, Swiper>>
+^|<<text-banner, Text Banner>>
+
+a|image::https://cdn.media.amplience.net/i/elfcosmetics/amp-icon-subnav-bar@2x[link="#visual-navigation"]
+|
+|
+|
+
+^|<<visual-navigation, Visual Navigation>>
+|
+|
+|
+|===
+
+include::brand-product-grid.adoc[]
+
+include::card-list.adoc[]
+
+include::category-swiper.adoc[]
+
+include::category-swiper-tab.adoc[]
+
+include::fabric-care-feature.adoc[]
+
+include::hero-split-container.adoc[]
+
+include::hero.adoc[]
+
+include::in-page-navigation.adoc[]
+
+

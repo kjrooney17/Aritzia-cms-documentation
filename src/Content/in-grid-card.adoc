@@ -1,0 +1,66 @@
+[#in-grid-card]
+=== In-Grid Card
+
+*Schema* - in-grid-card.json
+
+==== Example
+
+.In-Grid Card Example
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Card-Example[]
+
+==== New
+
+To create a In-Grid Card:
+
+. Navigate to the Content repository.
+. Navigate to the folder where the Split In-Grid Cardwill be saved.
+. click on the *Create Content* Button.
++
+.In-Grid Card
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-In-Grid-Card[]
++
+. Search by typing Icon In-Grid Card or scroll through the list to find the In-Grid Card
+. Click on the In-Grid Card Component type.
+
+==== Input Components
+
+.In-Grid Card Input
+image::https://cdn.media.amplience.net/i/elfcosmetics/In-Grid-Input[]
+
+---
+
+===== Image
+
+include::image.adoc[]
+
+---
+
+===== Amplience Video
+
+include::amplience-video.adoc[]
+
+---
+
+===== Text Controls
+
+include::text-controls-vertical-only.adoc[]
+
+---
+
+===== Headline Text
+
+include::headline-with-strikethrough.adoc[]
+
+---
+
+===== Body Text
+
+include::body-text.adoc[]
+
+---
+
+===== CTA
+
+include::cta.adoc[]
+
+---

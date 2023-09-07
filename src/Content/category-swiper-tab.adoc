@@ -1,0 +1,14 @@
+[#category-swiper-tab]
+=== Category Swiper Tab
+
+.Category Swiper Tab Links
+[.category-swiper-tab-links]
+[cols="4,8"]
+|===
+
+|Content Model|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperTab/fields
+
+|Content Model Reference|https://app.contentful.com/spaces/eecyu5u1lwod/environments/master/content_types/categorySwiperCard/fields
+
+|Example Content|Still Need to get
+|===

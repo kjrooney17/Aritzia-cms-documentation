@@ -1,0 +1,32 @@
+[#nav-list-item]
+=== Nav List Item
+
+The nav list item is a link to a page and cannot expand to another level within the menu.
+
+*Schema* - nav-list-item
+
+==== Example
+
+.Example Nav List Item
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Item[]
+
+---
+
+==== Input Components
+
+.Nav List Input
+image::https://cdn.media.amplience.net/i/elfcosmetics/Nav-List-Item-Input[]
+
+---
+
+===== Help
+
+.Nav List Item Help
+image::https://assets.iceland.co.uk/i/iceland/Nav-List-Item-Help[]
+
+---
+
+===== Menu Definition
+include::menu-definition-nav-list-item.adoc[]
+
+include::nav-routes.adoc[]

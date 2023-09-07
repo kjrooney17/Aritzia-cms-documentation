@@ -1,0 +1,57 @@
+=== Creating Pages
+
+==== Category Page
+
+All Category pages are created by a SFCC Cartridge that has been developed by 64Labs. It is recommended that no Category page be created manually and all Category pages are created using the SFCC Cartridge.
+
+==== Content Page
+
+To create a Content page:
+
+. Navigate to the folder where you want to save the content page.
+. Click on the *Create Content* button.
+. Either type content page or search through the content until you find content page.
++
+.Add Content page
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-Content-Page[]
++
+. Click on Content Page to load the Content Page content type. For more information on Conent page properties click <<content-page,here>>.
+. Enter in relevent SEO information.
+. Enter in relevent Page Heading information.
+. Click on the *+* symbol within the Content input component to add content to the page.
+. Save the Content Page.
+. Navigate to the Config repo and find the Content page folder under the Routes folder.
+. Click on *Create Content* to add a route.
+. Click on App Route.
++
+.Add App Route
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-App-Route[]
++
+. Add in the route that will be used for the content page.
+. Select the page that was just created to create the link between the route and the page. For more information on routes click <<routes,here>>.
+
+==== Landing Page
+
+To create a Landing page:
+
+. Navigate to the folder where you want to save the content page.
+. Click on the *Create Content* button.
+. Either type Landing page or search through the content until you find content page.
++
+.Add Landing page
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-Landing-Page[]
++
+. Click on Content Page to load the Content Page content type. For more information on Conent page properties click <<landing-page,here>>.
+. Enter in relevent SEO information.
+. Enter in relevent Page Heading information.
+. Click on the *+* symbol within the Content input component to add content to the page.
+. Save the Content Page.
+. Navigate to the Config repo and find the Content page folder under the Routes folder.
+. Click on *Create Content* to add a route.
+. Click on App Route.
++
+.Add App Route
+image::https://cdn.media.amplience.net/i/elfcosmetics/Add-App-Route[]
++
+. Add in the route that will be used for the content page.
+. Select the page that was just created to create the link between the route and the page. For more information on routes click <<routes,here>>.

@@ -1,0 +1,23 @@
+=== Homepage
+
+Within Amplience there have been 2 homepages setup. One for e.l.f. Cosmetics and for e.l.f. Skin. Content for each page is managed independently of each other through the page content types. Content can be shared across the pages, but it still needs to be associated with each page.
+
+Schema: *homepage.json*
+
+Below is an example screen shot of the homepage that doesn't necessarily reflect what's currently on the production homepage. It was taken from the development environment and is meant to highlight and show the content names of the content items on the page as a reference.
+
+==== e.l.f. Cosmetics
+
+image::https://cdn.media.amplience.net/i/elfcosmetics/elf-cosmetics-homepage[]
+
+//.Homepage Mobile view
+//image::https://cdn.media.amplience.net/i/elfcosmetics/elf-cosmetics-mobile-homepage[]
+
+
+
+
+==== Slots
+
+include::homepage-slots.adoc[]
+
+---
